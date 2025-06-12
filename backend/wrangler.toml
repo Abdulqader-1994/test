@@ -1,0 +1,150 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "server"
+main = "./src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "USER_DB"
+database_name = "user"
+database_id = "939f13c4-873e-45cf-a4c1-60dd8f2998d8"
+
+[[d1_databases]]
+binding = "CANCELLEDTRADE_DB"
+database_name = "cancelledTrade"
+database_id = "010a1e72-98da-4635-b7f8-3c111aaaa822"
+
+[[d1_databases]]
+binding = "DONETRADE_DB"
+database_name = "doneTrade"
+database_id = "945133e9-0b31-4cea-825f-fc80d7ef3a3b"
+
+[[d1_databases]]
+binding = "SNAPSHOT_DB"
+database_name = "snapshot"
+database_id = "2998fdc4-f1d9-4380-be8e-dbf37f6e2289"
+
+[[d1_databases]]
+binding = "PROFIT_DB"
+database_name = "profit"
+database_id = "c9411713-71d1-4688-bac3-10b266b320e1"
+
+[[d1_databases]]
+binding = "TRANSECTION_DB"
+database_name = "transection"
+database_id = "48b196ba-72e9-44ea-ae00-af1089232fd1"
+
+[[d1_databases]]
+binding = "CURRICULUM_DB"
+database_name = "curriculum"
+database_id = "70cf2f1d-a1eb-4a76-901e-46dd763d7e5f"
+
+[[d1_databases]]
+binding = "STATISTICS_DB"
+database_name = "statistics"
+database_id = "6e02599f-c542-4d17-8522-2a0adef1e333"
+
+[[d1_databases]]
+binding = "TASK_DB"
+database_name = "task"
+database_id = "b6603c60-a2b6-447e-8430-3d79fcb87088"
+
+[[r2_buckets]]
+bucket_name = "data"
+binding = "DATA"
+
+[[durable_objects.bindings]]
+name = "TRADE_SHARE"
+class_name = "TradeShare"
+
+[[durable_objects.bindings]]
+name = "TASK_LAB"
+class_name = "TaskLab"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["TradeShare", "TaskLab"]
+
+[placement]
+mode = "smart"
+
+[dev]
+ip = "0.0.0.0"
+port = 8787
+local_protocol = "http"
+
+# Variable bindings. These are arbitrary, plaintext strings (similar to environment variables)
+# Docs:
+# - https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
+# Note: Use secrets to store sensitive data.
+# - https://developers.cloudflare.com/workers/configuration/secrets/
+# [vars]
+# MY_VARIABLE = "production_value"
+
+# Bind the Workers AI model catalog. Run machine learning models, powered by serverless GPUs, on Cloudflare’s global network
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#workers-ai
+# [ai]
+# binding = "AI"
+
+# Bind an Analytics Engine dataset. Use Analytics Engine to write analytics within your Pages Function.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#analytics-engine-datasets
+# [[analytics_engine_datasets]]
+# binding = "MY_DATASET"
+
+# Bind a headless browser instance running on Cloudflare's global network.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#browser-rendering
+# [browser]
+# binding = "MY_BROWSER"
+
+# Bind a dispatch namespace. Use Workers for Platforms to deploy serverless functions programmatically on behalf of your customers.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#dispatch-namespace-bindings-workers-for-platforms
+# [[dispatch_namespaces]]
+# binding = "MY_DISPATCHER"
+# namespace = "my-namespace"
+
+# Bind a Hyperdrive configuration. Use to accelerate access to your existing databases from Cloudflare Workers.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#hyperdrive
+# [[hyperdrive]]
+# binding = "MY_HYPERDRIVE"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Bind a KV Namespace. Use KV as persistent storage for small key-value pairs.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#kv-namespaces
+# [[kv_namespaces]]
+# binding = "MY_KV_NAMESPACE"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Bind an mTLS certificate. Use to present a client certificate when communicating with another service.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#mtls-certificates
+# [[mtls_certificates]]
+# binding = "MY_CERTIFICATE"
+# certificate_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Bind a Queue producer. Use this binding to schedule an arbitrary task that may be processed later by a Queue consumer.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#queues
+# [[queues.producers]]
+# binding = "MY_QUEUE"
+# queue = "my-queue"
+
+# Bind a Queue consumer. Queue Consumers can retrieve tasks scheduled by Producers to act on them.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#queues
+# [[queues.consumers]]
+# queue = "my-queue"
+
+# Bind an R2 Bucket. Use R2 to store arbitrarily large blobs of data, such as files.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#r2-buckets
+# [[r2_buckets]]
+# binding = "MY_BUCKET"
+# bucket_name = "my-bucket"
+
+# Bind another Worker service. Use this binding to call another Worker without network overhead.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
+# [[services]]
+# binding = "MY_SERVICE"
+# service = "my-service"
+
+# Bind a Vectorize index. Use to store and query vector embeddings for semantic search, classification and other vector search use-cases.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#vectorize-indexes
+# [[vectorize]]
+# binding = "MY_INDEX"
+# index_name = "my-index"

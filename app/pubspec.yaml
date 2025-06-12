@@ -1,0 +1,165 @@
+name: ailence
+
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  graphql_flutter: ^5.2.0-beta.8
+  font_awesome_flutter: ^10.8.0
+  get: ^4.7.2
+  flutter_secure_storage: ^9.2.4
+  google_sign_in: ^6.3.0
+  crypto: ^3.0.6
+  url_strategy: ^0.3.0
+  fl_chart: ^0.70.2
+  universal_html: ^2.2.4
+  url_launcher: ^6.3.1
+  intl: ^0.19.0
+  web_socket_channel: ^3.0.2
+  
+  # entidio packages
+  file_picker: ^9.2.1
+  flex_color_picker: ^3.7.0
+  flutter_quill: ^11.1.2
+  flutter_math_fork: ^0.7.3
+  flutter_painter_v2: ^2.1.0+1
+  flutter_zoom_drawer: ^3.2.0
+  image: ^4.5.4
+  uuid: ^4.5.1
+  flutter_html_math: ^3.0.0
+
+dependency_overrides:
+  flutter_secure_storage_linux: ^2.0.1
+  flutter_secure_storage_platform_interface: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/images/logo.png
+  fonts:
+    - family: El Messiri
+      fonts:
+        - asset: assets/fonts/ElMessiri-Regular.ttf
+        - asset: assets/fonts/ElMessiri-Bold.ttf
+          weight: 700
+    - family: Almendra
+      fonts:
+        - asset: assets/fonts/Almendra-Regular.ttf
+        - asset: assets/fonts/Almendra-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Almendra-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Almendra-BoldItalic.ttf
+          weight: 700
+          style: italic
+    - family: Amiri
+      fonts:
+        - asset: assets/fonts/Amiri-Regular.ttf
+        - asset: assets/fonts/Amiri-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Amiri-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Amiri-BoldItalic.ttf
+          weight: 700
+          style: italic
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
+    - family: Lato
+      fonts:
+        - asset: assets/fonts/Lato-Regular.ttf
+        - asset: assets/fonts/Lato-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Lato-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Lato-BoldItalic.ttf
+          weight: 700
+          style: italic
+    - family: Lobster
+      fonts:
+        - asset: assets/fonts/Lobster-Regular.ttf
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 700
+    - family: IBM Plex Sans
+      fonts:
+        - asset: assets/fonts/IBMPlexSans-Regular.ttf
+        - asset: assets/fonts/IBMPlexSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/IBMPlexSans-Italic.ttf
+          style: italic
+        - asset: assets/fonts/IBMPlexSans-BoldItalic.ttf
+          weight: 700
+          style: italic
+    - family: Noto Sans
+      fonts:
+        - asset: assets/fonts/NotoSans-Regular.ttf
+        - asset: assets/fonts/NotoSans-Italic.ttf
+          style: italic
+    - family: Noto Serif
+      fonts:
+        - asset: assets/fonts/NotoSerif-Regular.ttf
+        - asset: assets/fonts/NotoSerif-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/NotoSerif-Italic.ttf
+          style: italic
+        - asset: assets/fonts/NotoSerif-BoldItalic.ttf
+          weight: 700
+          style: italic
+    - family: Open Sans
+      fonts:
+        - asset: assets/fonts/OpenSans-Regular.ttf
+        - asset: assets/fonts/OpenSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/OpenSans-Italic.ttf
+          style: italic
+        - asset: assets/fonts/OpenSans-BoldItalic.ttf
+          weight: 700
+          style: italic
+    - family: Playfair Display
+      fonts:
+        - asset: assets/fonts/PlayfairDisplay-Regular.ttf
+        - asset: assets/fonts/PlayfairDisplay-Italic.ttf
+          style: italic
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Poppins-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Poppins-BoldItalic.ttf
+          weight: 700
+          style: italic
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/Ubuntu-Regular.ttf
+        - asset: assets/fonts/Ubuntu-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Ubuntu-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Ubuntu-BoldItalic.ttf
+          weight: 700
+          style: italic
