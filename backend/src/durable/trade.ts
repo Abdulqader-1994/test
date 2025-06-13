@@ -236,11 +236,11 @@ export class TradeShare extends DurableObject {
 				if (aIsMain != bIsMain) return aIsMain ? -1 : 1;
 				if (aIsMain && bIsMain) return aCreatedAt - bCreateAt;
 
-				// b) The “others” → best‐price first based on side
+				// b) best‐price first based on side
 				if (aPrice !== bPrice) {
 					return type === 1
-						? aPrice - bPrice   // buying: cheapest asks first
-						: bPrice - aPrice;  // selling: highest bids first
+						? bPrice - aPrice   // selling: highest asks first
+						: aPrice - bPrice;  // buying: cheapest bids first
 				}
 
 				// c) Tie‐break on timestamp
@@ -445,7 +445,6 @@ export class TradeShare extends DurableObject {
 		const database = new D1QB((this.env as BackeEndEnv).USER_DB)
 		let statms = statements
 
-		let newOwnerTotalShares = 0;
 		const money = await database.fetchOne({ tableName: 'user', where: { conditions: 'id = ?1', params: [userId] } }).execute()
 
 		if (money.results) {
@@ -577,12 +576,12 @@ export class TradeShare extends DurableObject {
 
 			const user = statms.balances.filter(el => el.userId == userId)
 			if (user.length > 0) {
-				user[0].balance = user[0].balance.subtract(totalOrderMoney),
-					user[0].shares += totalExecuted
+				user[0].balance = user[0].balance.subtract(totalOrderMoney)
+				user[0].shares += totalExecuted
 			} else {
 				statms.balances.push({
 					balance: buyerMoney.subtract(totalOrderMoney),
-					shares: newOwnerTotalShares + totalExecuted,
+					shares: totalExecuted,
 					userId: userId
 				})
 			}
