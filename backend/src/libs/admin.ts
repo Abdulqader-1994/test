@@ -11,8 +11,8 @@ export default class Admin {
 		args: {
 			jwtToken: t.arg.string({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { isAdmin } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { isAdmin } = await checkAuth(args.jwtToken, ctx.env)
 			if (!isAdmin) throw new GraphQLError(AppError.UN_AUTHED.toString());
 
 			const result: Curriculum[] = [];
@@ -51,8 +51,8 @@ export default class Admin {
 			openToWork: t.arg.int({ required: true }),
 			jwtToken: t.arg.string({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { isAdmin } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { isAdmin } = await checkAuth(args.jwtToken, ctx.env)
 			if (!isAdmin) throw new GraphQLError(AppError.UN_AUTHED.toString());
 
 			const database = new D1QB(ctx.env.TASK_DB)
@@ -92,8 +92,8 @@ export default class Admin {
 		args: {
 			jwtToken: t.arg.string({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { isAdmin } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { isAdmin } = await checkAuth(args.jwtToken, ctx.env)
 			if (!isAdmin) throw new GraphQLError(AppError.UN_AUTHED.toString());
 
 			const users: AdminAccount[] = []
@@ -137,8 +137,8 @@ export default class Admin {
 			taskType: t.arg.int({ required: true }),
 			reDoIt: t.arg.int({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { isAdmin } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { isAdmin } = await checkAuth(args.jwtToken, ctx.env)
 			if (!isAdmin) throw new GraphQLError(AppError.UN_AUTHED.toString());
 
 			const database = new D1QB(ctx.env.TASK_DB)
@@ -191,8 +191,8 @@ export default class Admin {
 			jwtToken: t.arg.string({ required: true }),
 			curriculumId: t.arg.int({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { isAdmin } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { isAdmin } = await checkAuth(args.jwtToken, ctx.env)
 			if (!isAdmin) throw new GraphQLError(AppError.UN_AUTHED.toString());
 
 			const database = new D1QB(ctx.env.TASK_DB)
@@ -231,8 +231,8 @@ export default class Admin {
 			taskId: t.arg.int({ required: true }),
 			data: t.arg.string({ required: true }), // data for user shares
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { isAdmin } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { isAdmin } = await checkAuth(args.jwtToken, ctx.env)
 			if (!isAdmin) throw new GraphQLError(AppError.UN_AUTHED.toString())
 
 			const data: any[] = JSON.parse(args.data)

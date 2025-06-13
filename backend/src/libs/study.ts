@@ -10,7 +10,7 @@ export default class Study {
       jwtToken: t.arg.string({ required: true }),
     },
     resolve: async (_parent, args, ctx) => {
-      const { id } = await checkAuth(args.jwtToken)
+      const { id } = await checkAuth(args.jwtToken, ctx.env)
 
       const subscribed: Subscribed[] = []
 
@@ -47,7 +47,7 @@ export default class Study {
       jwtToken: t.arg.string({ required: true }),
     },
     resolve: async (_parent, args, ctx) => {
-      await checkAuth(args.jwtToken)
+      await checkAuth(args.jwtToken, ctx.env)
 
       const result: Curriculum[] = [];
 

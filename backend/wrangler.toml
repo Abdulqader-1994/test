@@ -78,8 +78,15 @@ local_protocol = "http"
 # - https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
 # Note: Use secrets to store sensitive data.
 # - https://developers.cloudflare.com/workers/configuration/secrets/
+# Secrets required by the backend. Set them using `wrangler secret put <NAME>` in production.
+# For local development you can place them under [vars] below.
 # [vars]
-# MY_VARIABLE = "production_value"
+# MAILTRAP_TOKEN = ""
+# GOOGLE_CLIENT_ID_DESKTOP = ""
+# GOOGLE_CLIENT_SECRET_DESKTOP = ""
+# GOOGLE_CLIENT_ID_WEB = ""
+# GOOGLE_CLIENT_SECRET_WEB = ""
+# JWT_SECRET = ""
 
 # Bind the Workers AI model catalog. Run machine learning models, powered by serverless GPUs, on Cloudflare’s global network
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#workers-ai

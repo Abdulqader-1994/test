@@ -11,8 +11,8 @@ export default class Work {
 		args: {
 			jwtToken: t.arg.string({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { id, isAdmin } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { id, isAdmin } = await checkAuth(args.jwtToken, ctx.env)
 
 			if (!isAdmin) {
 				const database = new D1QB(ctx.env.USER_DB)
@@ -52,8 +52,8 @@ export default class Work {
 			jwtToken: t.arg.string({ required: true }),
 			curriculumId: t.arg.int({ required: true })
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { id, isAdmin } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { id, isAdmin } = await checkAuth(args.jwtToken, ctx.env)
 
 			if (!isAdmin) {
 				const database = new D1QB(ctx.env.USER_DB)
@@ -171,8 +171,8 @@ export default class Work {
 		args: {
 			jwtToken: t.arg.string({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { id } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { id } = await checkAuth(args.jwtToken, ctx.env)
 
 			const result: DoneTask[] = [];
 
@@ -212,8 +212,8 @@ export default class Work {
 			curriculumId: t.arg.int({ required: true }),
 			jwtToken: t.arg.string({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { id, isAdmin } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { id, isAdmin } = await checkAuth(args.jwtToken, ctx.env)
 
 			const durableId = ctx.env.TASK_LAB.idFromName(args.curriculumId.toString())
 			console.log('durableId ', durableId);
@@ -275,8 +275,8 @@ export default class Work {
 			jwtToken: t.arg.string({ required: true }),
 			data: t.arg.string({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { id } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { id } = await checkAuth(args.jwtToken, ctx.env)
 
 			const database = new D1QB(ctx.env.TASK_DB)
 			const res = await database.fetchOne({
