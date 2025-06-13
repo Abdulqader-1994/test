@@ -16,7 +16,7 @@ export default class User {
 		resolve: async (_parent, args, ctx) => {
 			if (args.newUsername.length < 5) throw new GraphQLError(AppError.USERNAME_CHARS_MIN)
 
-			const { id } = await checkAuth(args.jwtToken)
+                        const { id } = await checkAuth(args.jwtToken, ctx.env)
 
 			const database = new D1QB(ctx.env.USER_DB)
 			let res = await database.fetchOne({
@@ -44,7 +44,7 @@ export default class User {
 			newVal: t.arg.int({ required: true }),
 		},
 		resolve: async (_parent, args, ctx) => {
-			const { id } = await checkAuth(args.jwtToken)
+                        const { id } = await checkAuth(args.jwtToken, ctx.env)
 
 			const database = new D1QB(ctx.env.USER_DB)
 			await database.update({
@@ -63,7 +63,7 @@ export default class User {
 			jwtToken: t.arg.string({ required: true }),
 		},
 		resolve: async (_parent, args, ctx) => {
-			const { id } = await checkAuth(args.jwtToken)
+                        const { id } = await checkAuth(args.jwtToken, ctx.env)
 
 			const database = new D1QB(ctx.env.USER_DB)
 			const res = await database.fetchOne({ tableName: 'user', where: { conditions: 'id = ?1', params: [id] } }).execute()
@@ -91,7 +91,7 @@ export default class User {
 			offset: t.arg.int({ required: true }),
 		},
 		resolve: async (_parent, args, ctx) => {
-			const { id } = await checkAuth(args.jwtToken)
+                        const { id } = await checkAuth(args.jwtToken, ctx.env)
 
 			/* await ctx.env.DATA.delete(`1-1-${0}`)
 			for (let i = 0; i < 5; i++) {

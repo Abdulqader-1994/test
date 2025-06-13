@@ -11,8 +11,8 @@ export default class Shares {
 		args: {
 			jwtToken: t.arg.string({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { id } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { id } = await checkAuth(args.jwtToken, ctx.env)
 
 			const result: BalanceData = { balance: '', shares: 0, totalShares: 0, statistics: [], distruibutedProfit: [], sharesData: [] }
 
@@ -131,8 +131,8 @@ export default class Shares {
 		args: {
 			jwtToken: t.arg.string({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			const { id } = await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        const { id } = await checkAuth(args.jwtToken, ctx.env)
 
 			const data: BalanceWithHistory = { balance: '0', shares: 0, history: [] }
 
@@ -168,8 +168,8 @@ export default class Shares {
 			jwtToken: t.arg.string({ required: true }),
 			shareId: t.arg.int({ required: true }),
 		},
-		resolve: async (_parent, args, ctx) => {
-			await checkAuth(args.jwtToken)
+                resolve: async (_parent, args, ctx) => {
+                        await checkAuth(args.jwtToken, ctx.env)
 
 			const database = new D1QB(ctx.env.TASK_DB)
 			const res = await database.fetchOne({ tableName: 'userTask', where: { conditions: 'id = ?1', params: [args.shareId] } }).execute()

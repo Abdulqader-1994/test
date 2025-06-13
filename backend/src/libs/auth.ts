@@ -4,8 +4,8 @@ import AppError from "../utils/error";
 import { GraphQLError } from "graphql";
 import { Account, mutateBuilderType, queryBuilderType } from "../graphql/types";
 import jwt from "@tsndr/cloudflare-worker-jwt";
-import { jwtSecret } from "../utils/check_auth";
 import { accountRef } from "../graphql/refs";
+import { BackeEndEnv } from "../graphql/builder";
 
 export default class Auth {
   static createEmailAccount = (t: mutateBuilderType) => t.field({
@@ -73,9 +73,7 @@ export default class Auth {
         if (Date.now() < lastEmailTime) throw new GraphQLError(AppError.TOO_MANY_EMAIL);
       }
 
-      const TOKEN = "ff8dde10909e8d12b08c2cdf29c80cb8";
-
-      const client = new MailtrapClient({ token: TOKEN });
+      const client = new MailtrapClient({ token: ctx.env.MAILTRAP_TOKEN });
 
       const code = Math.floor(100000 + Math.random() * 900000);
 
@@ -161,7 +159,7 @@ export default class Auth {
         if (args.alreadyHasId.length > 0) {
           info = args.alreadyHasId;
         } else {
-          info = await getGoogleToken(args.code, args.redirectUri, args.platform);
+          info = await getGoogleToken(args.code, args.redirectUri, args.platform, ctx.env);
         }
       }
 
@@ -245,7 +243,7 @@ export default class Auth {
         user.id = res.results!.id as number;
       }
 
-      user.jwtToken = await jwt.sign({ id: user.id, isAdmin: user.isAdmin }, jwtSecret);
+      user.jwtToken = await jwt.sign({ id: user.id, isAdmin: user.isAdmin }, ctx.env.JWT_SECRET);
       return user;
     },
   });
@@ -286,7 +284,7 @@ export default class Auth {
         distributePercent: res.results.distributePercent as number,
         isAdmin: res.results.isAdmin as number,
         adminPrivileges: res.results.adminPrivileges as number,
-        jwtToken: await jwt.sign({ id: res.results.id, isAdmin: res.results.isAdmin }, jwtSecret),
+        jwtToken: await jwt.sign({ id: res.results.id, isAdmin: res.results.isAdmin }, ctx.env.JWT_SECRET),
       };
       
       return user;
@@ -330,9 +328,7 @@ export default class Auth {
         if (Date.now() < lastEmailTime) throw new GraphQLError(AppError.TOO_MANY_EMAIL);
       }
 
-      const TOKEN = "ff8dde10909e8d12b08c2cdf29c80cb8";
-
-      const client = new MailtrapClient({ token: TOKEN });
+      const client = new MailtrapClient({ token: ctx.env.MAILTRAP_TOKEN });
 
       const code = Math.floor(100000 + Math.random() * 900000);
 
@@ -522,16 +518,15 @@ function bufferToHex(buffer: Uint8Array): string {
     .join("");
 }
 
-async function getGoogleToken(code: string, redirectUri: string, platform: String) {
-  var client_id, client_secret: String;
+async function getGoogleToken(code: string, redirectUri: string, platform: String, env: BackeEndEnv) {
+  let client_id: String;
+  let client_secret: String;
   if (platform == "desktop") {
-    client_id = "1039087411910-4qr13dtntnb3ivqddo7pmhdaq4p1puo0.apps.googleusercontent.com";
-    client_secret = "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";
-  }
-  // web platform
-  else {
-    client_id = "1039087411910-kvkrgh0os6d8h8rq7v7anf2uv14kfi2m.apps.googleusercontent.com";
-    client_secret = "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";
+    client_id = env.GOOGLE_CLIENT_ID_DESKTOP;
+    client_secret = env.GOOGLE_CLIENT_SECRET_DESKTOP;
+  } else {
+    client_id = env.GOOGLE_CLIENT_ID_WEB;
+    client_secret = env.GOOGLE_CLIENT_SECRET_WEB;
   }
 
   const url = await fetch("https://oauth2.googleapis.com/token", {

@@ -8,3 +8,11 @@ the project consist of 4 parts
 3) backend folder: which conatin the server files that run in cloudflare worker serverless, it's developed in js.
 
 4) panal folder: which contain the admin panal for controlling users, works, tasks ...etc, it's developed in quasar vue js.
+
+For production deployments, sensitive keys like `MAILTRAP_TOKEN`, Google OAuth credentials and `JWT_SECRET` should be stored using:
+
+```
+wrangler secret put <NAME>
+```
+
+During local development they can be set under the `[vars]` section of `backend/wrangler.toml`.

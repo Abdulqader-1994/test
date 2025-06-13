@@ -14,7 +14,7 @@ export default {
 			const url = new URL(request.url);
 			const token = url.searchParams.get("token");
 
-			if (token) await checkAuth(token, 'websocket');
+                        if (token) await checkAuth(token, env, 'websocket');
 			else return new Response('Unauthorized', { status: 401 })
 
 			const upgradeHeader = request.headers.get('Upgrade');
