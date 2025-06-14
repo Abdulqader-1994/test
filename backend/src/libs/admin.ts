@@ -144,7 +144,7 @@ export default class Admin {
 			const database = new D1QB(ctx.env.TASK_DB)
 
 			// update task data
-			if (args.taskId && args.status) {
+			if (args.taskId) {
 				await database.update({
 					tableName: 'task',
 					data: {
@@ -156,7 +156,7 @@ export default class Admin {
 						reDoIt: args.reDoIt,
 						reDoItNum: 0,
 						access: args.access,
-						status: args.status,
+						status: args.status!,
 					},
 					where: { conditions: 'id = ?1', params: [args.taskId] }
 				}).execute()
@@ -255,7 +255,7 @@ export default class Admin {
 				let trustPoint = user.results.trustPoint as number
 				if (!isAdmin) {
 					let taskPoint = 3; // default for every task that has more then 80% correct
-					if (el.shares < (el.taskShare as number) / 5 * 4) taskPoint = 2 // less than 60 %
+					if (el.shares < (el.taskShare as number) / 5 * 4) taskPoint = 2 // less than 80 %
 					if (el.shares < (el.taskShare as number) / 5 * 2) taskPoint = 1 // less than 40 %
 					if (el.shares == 0) taskPoint = 0;
 
