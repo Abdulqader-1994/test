@@ -6,7 +6,7 @@ export class TaskLab extends DurableObject {
 	constructor(private state: DurableObjectState, env: BackeEndEnv) {
 		super(state, env);
 
-		this.ctx.storage.put('lastCheck', Date.now());
+		this.state.storage.put('lastCheck', Date.now());
 	}
 
 	async resetTasks() {
@@ -61,6 +61,6 @@ export class TaskLab extends DurableObject {
 	}
 
 	async deleteAll() {
-		await this.ctx.storage.deleteAll();
+		await this.state.storage.deleteAll();
 	}
 }
