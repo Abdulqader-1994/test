@@ -112,7 +112,8 @@ export class TradeShare extends DurableObject {
 							checkTotal = (amount * price)
 						}
 
-						if (checkTotal == 0 && price == 0) break; // no opposite‐side liquidity → reject the order
+						// no opposite‐side liquidity → reject the order (nearly impossible to happen because it's controlled via admin to always provide liquidity) 
+						if (checkTotal == 0 && price == 0) break;
 						if (amount > 30) amount = 30 // setup max amount
 
 						checkTotal += this.tax; // check with tax
@@ -199,11 +200,11 @@ export class TradeShare extends DurableObject {
 	async placeNewOrder(amount: number, price: number, type: number, userId: number): Promise<AffectedResult> {
 		let result: AffectedResult = { affected: [], statements: { changes: [], balances: [] }, totalPrice: 0, }
 
-		let statment = '';
+		let statment = 'orderStatus = 1 AND ';
 
 		// type 0 mean buy order
-		if (type == 0) statment = 'orderStatus = 1 AND orderType = 1' // buy Statement
-		else statment = 'orderStatus = 1 AND orderType = 0' // sell Statement
+		if (type == 0) statment += 'orderType = 1' // buy Statement
+		else statment += 'orderType = 0' // sell Statement
 
 		// if price is 0 this mean best market price or set it based on price
 		if (price != 0) statment += type == 0 ? ' AND price <= ?1' : ' AND price >= ?1'
@@ -239,13 +240,16 @@ export class TradeShare extends DurableObject {
 				// b) best‐price first based on side
 				if (aPrice !== bPrice) {
 					return type === 1
-						? bPrice - aPrice   // selling: highest asks first
-						: aPrice - bPrice;  // buying: cheapest bids first
+						? bPrice - aPrice   // highest asks first
+						: aPrice - bPrice;  // cheapest bids first
 				}
 
 				// c) Tie‐break on timestamp
 				return aCreatedAt - bCreateAt;
 			});
+
+			console.log(amount, price, type, userId, orders);
+			
 
 			let remainingAmount = amount;
 
