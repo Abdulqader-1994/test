@@ -67,7 +67,7 @@ export default class Admin {
 						semester: args.semester,
 						openToWork: args.openToWork,
 					},
-					where: { conditions: `id = ${args.id}` }
+					where: { conditions: 'id = ?1', params: [args.id] }
 				}).execute()
 			} else {
 				await database.insert({
@@ -280,34 +280,34 @@ export default class Admin {
 		}
 	})
 
-/* 	static async addUserTransection(args: any, ctx: any) {
-		const database = new D1QB(ctx.USER_DB)
-
-		const res = await database.insert({
-			tableName: 'Transection',
-			data: {
+	/* 	static async addUserTransection(args: any, ctx: any) {
+			const database = new D1QB(ctx.USER_DB)
+	
+			const res = await database.insert({
+				tableName: 'Transection',
+				data: {
+					userId: args.userId,
+					time: Date.now(),
+					amount: args.amount,
+					currencyInfo: args.currencyInfo,
+					provider: args.provider,
+					type: args.type,
+				},
+				returning: ['id', 'time'],
+			}).execute()
+	
+			if (res.results == null) throw new GraphQLError(AppError.UNKNOW_ERROR);
+	
+			var trans = {
+				id: res.results.id as number,
 				userId: args.userId,
-				time: Date.now(),
 				amount: args.amount,
 				currencyInfo: args.currencyInfo,
+				time: res.results.time as number,
 				provider: args.provider,
 				type: args.type,
-			},
-			returning: ['id', 'time'],
-		}).execute()
-
-		if (res.results == null) throw new GraphQLError(AppError.UNKNOW_ERROR);
-
-		var trans = {
-			id: res.results.id as number,
-			userId: args.userId,
-			amount: args.amount,
-			currencyInfo: args.currencyInfo,
-			time: res.results.time as number,
-			provider: args.provider,
-			type: args.type,
-		}
-
-		return trans;
-	} */
+			}
+	
+			return trans;
+		} */
 }
