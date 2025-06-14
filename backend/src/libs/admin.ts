@@ -144,7 +144,7 @@ export default class Admin {
 			const database = new D1QB(ctx.env.TASK_DB)
 
 			// update task data
-			if (args.taskId) {
+			if (args.taskId && args.status) {
 				await database.update({
 					tableName: 'task',
 					data: {
@@ -156,7 +156,7 @@ export default class Admin {
 						reDoIt: args.reDoIt,
 						reDoItNum: 0,
 						access: args.access,
-						status: args.status!,
+						status: args.status,
 					},
 					where: { conditions: 'id = ?1', params: [args.taskId] }
 				}).execute()
