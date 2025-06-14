@@ -27,7 +27,7 @@ const features = [
   },
   {
     img: new URL('@/assets/dollar.png', import.meta.url).href,
-    title: 'pay',
+    title: 'earnMoney',
   },
   {
     img: new URL('@/assets/get.png', import.meta.url).href,
