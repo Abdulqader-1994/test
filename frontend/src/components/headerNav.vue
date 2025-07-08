@@ -2,7 +2,7 @@
   <nav class="flex flex-row justify-between items-center py-2 text-lg md:text-sm max-w-[1200px]">
     <div class="flex flex-row">
       <RouterLink v-for="l in links" class="flex items-center gap-x-1.5 px-3 xs:px-2 md:px-2 hovering"
-        :class="{ 'curved': l.name == 'home' }" :to="l.link">
+        :class="{ 'curved': l.name == 'home' }" :to="{ path: '/', hash: l.hash }">
         <SvgIcon type="mdi" :path="l.icon" />
         <div class="block xs:hidden" :class="{ 'sm:hidden xs:hidden': l.name != 'home' }">{{ $t(l.name) }}</div>
       </RouterLink>
@@ -31,27 +31,27 @@ const links = [
   {
     icon: mdiHome,
     name: 'home',
-    link: '/',
+    hash: '#home',
   },
   {
     icon: mdiBookOpenPageVariantOutline,
     name: 'learn',
-    link: '/',
+    hash: '#learn',
   },
   {
     icon: mdiCashMultiple,
     name: 'earn',
-    link: '/',
+    hash: '#earn',
   },
   {
     icon: mdiDownloadCircle,
     name: 'download',
-    link: '/',
+    hash: '#download',
   },
   {
     icon: mdiAccountCircle,
     name: 'account',
-    link: '/',
+    hash: '#account',
   },
 ];
 </script>
@@ -65,5 +65,4 @@ const links = [
 .hovering:hover {
   background-image: linear-gradient(to right, #F8398D, #2F75F8);
   border-radius: 30px 0px 30px 0px;
-}
-</style>
+}</style>

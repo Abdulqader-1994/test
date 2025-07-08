@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col px-5 relative overflow-hidden">
+  <div id="home" class="flex flex-col px-5 relative overflow-hidden">
     <!-- image -->
     <div class="relative flex flex-col items-center justify-center min-h-[25vw]">
       <div class="radial-gradient absolute top-[45%] left-[50%] -translate-x-[50%] -translate-y-[50%]"></div>
@@ -16,7 +16,7 @@
     <Description />
 
     <!-- buttons -->
-    <div class="flex flex-row justify-center items-center gap-x-10 xs:gap-x-3 text-2xl xs:text-sm my-7 xs:mt-0">
+    <div id="account" class="flex flex-row justify-center items-center gap-x-10 xs:gap-x-3 text-2xl xs:text-sm my-7 xs:mt-0">
       <div
         class="flex items-center gap-x-2 bg-gradient-to-r from-[#F8398D] to-[#2F75F8] py-1 rounded-3xl cursor-pointer px-7 xs:px-3">
         <SvgIcon type="mdi" :path="mdiAccountCircle" />
@@ -40,7 +40,7 @@
     </div>
 
     <!-- learning section -->
-    <div class="text-3xl xs:text-xl flex items-center justify-center gap-2 mb-6 title-gradient py-1 mt-12 xs:mt-8">
+    <div id="learn" class="text-3xl xs:text-xl flex items-center justify-center gap-2 mb-6 title-gradient py-1 mt-12 xs:mt-8">
       <SvgIcon size="33px" type="mdi" :path="mdiBookOpenPageVariantOutline" />
       <div>{{ $t('learning') }}</div>
     </div>
@@ -71,7 +71,7 @@
     <Learnfeatures />
 
     <!-- earn section -->
-    <div class="text-3xl xs:text-xl flex items-center justify-center gap-2 mb-6 title-gradient py-1 mt-20">
+    <div id="earn" class="text-3xl xs:text-xl flex items-center justify-center gap-2 mb-6 title-gradient py-1 mt-20">
       <SvgIcon size="33px" type="mdi" :path="mdiCashMultiple" />
       <div>{{ $t('earn') }}</div>
     </div>
@@ -104,7 +104,7 @@
     <Calculator />
 
     <!-- download section -->
-    <div class="text-3xl xs:text-xl flex items-center justify-center gap-2 mb-6 title-gradient py-1 mt-20">
+    <div id="download" class="text-3xl xs:text-xl flex items-center justify-center gap-2 mb-6 title-gradient py-1 mt-20">
       <SvgIcon size="33px" type="mdi" :path="mdiDownloadCircle" />
       <div>{{ $t('download') }}</div>
     </div>
