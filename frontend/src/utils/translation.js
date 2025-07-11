@@ -45,6 +45,10 @@ const arWords = {
   instegram: 'انستغرام',
   twitter: 'تويتر',
   contact: 'تواصل معنا عبر:',
+  signUp: 'انشاء حساب',
+  email: 'البريد الالكتروني',
+  password: 'كلمة المرور',
+  confirmPassword: 'تأكيد كلمة المرور',
 }
 
 const enWords = {
@@ -94,6 +98,10 @@ const enWords = {
   instegram: 'Instegram',
   twitter: 'Twitter',
   contact: 'contact us via:',
+  signUp: 'Sign Up',
+  email: 'Email',
+  password: 'Password',
+  confirmPassword: 'Confirm Password',
 }
 
 export const words = {
