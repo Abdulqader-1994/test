@@ -34,6 +34,15 @@ const confirmPassword = ref('')
 const showPassword = ref(false)
 
 const onSignUp = () => {
+  const emailRegex = /\S+@\S+\.\S+/
+  if (!emailRegex.test(email.value)) {
+    alert('Please enter a valid email')
+    return
+  }
+  if (password.value.length < 8) {
+    alert('Password must be at least 8 characters')
+    return
+  }
   if (password.value !== confirmPassword.value) {
     alert('Passwords do not match')
     return
