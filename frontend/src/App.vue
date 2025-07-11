@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col items-center justify-center overflow-hidden" :dir="textDirection" ref="mainContainer">
     <!-- Main Content -->
-    <HeaderNav class="w-full px-5" />
+    <HeaderNav class="w-full px-5" v-if="route.path != '/chat'" />
     <RouterView class="max-w-[1200px] px-5" />
-    <AppFooter />
+    <AppFooter v-if="route.path != '/chat'" />
 
     <!-- Footer Links -->
     <div class="w-full">
@@ -20,11 +20,13 @@
 </template>
 
 <script setup>
-import { RouterView, RouterLink } from 'vue-router';
+import { RouterView, RouterLink, useRoute } from 'vue-router';
 import HeaderNav from './components/headerNav.vue';
 import AppFooter from './components/appFooter.vue';
 import { useI18n } from 'vue-i18n';
 import { computed } from 'vue';
+
+const route = useRoute()
 
 const { locale } = useI18n();
 const textDirection = computed(() => (locale.value === 'ar' ? 'rtl' : 'ltr'));
