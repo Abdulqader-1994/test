@@ -19,8 +19,8 @@
 
 <script setup>
 import SvgIcon from '@jamescoyle/vue-icon'
-import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n' // Import useI18n
+import { RouterLink } from 'vue-router'
 import { computed } from 'vue'
 import { mdiHome, mdiBookOpenPageVariantOutline, mdiCashMultiple, mdiDownloadCircle, mdiAccountCircle } from '@mdi/js';
 
@@ -51,7 +51,7 @@ const links = [
   {
     icon: mdiAccountCircle,
     name: 'account',
-    hash: '#account',
+    hash: '/chat',
   },
 ];
 </script>
@@ -65,4 +65,5 @@ const links = [
 .hovering:hover {
   background-image: linear-gradient(to right, #F8398D, #2F75F8);
   border-radius: 30px 0px 30px 0px;
-}</style>
+}
+</style>
