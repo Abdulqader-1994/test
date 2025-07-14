@@ -9,10 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^3.13.8",
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.4.47",
     "@tsparticles/vue3": "^3.0.1",
+    "@vue/apollo-composable": "^4.2.2",
+    "graphql": "^16.11.0",
+    "graphql-tag": "^2.12.6",
     "particles.vue3": "^2.12.0",
+    "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.4.1",
+    "query-string": "^9.2.2",
     "tsparticles": "^3.7.1",
     "tsparticles-engine": "^2.12.0",
     "tsparticles-slim": "^2.12.0",
