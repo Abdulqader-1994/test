@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS "user";
+
+CREATE TABLE IF NOT EXISTS "user" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+	"email" TEXT NOT NULL,
+	"balance" TEXT NOT NULL DEFAULT "150.00",
+	"name" Text,
+	"image" Text
+);
+
+DROP INDEX IF EXISTS usersIndex;
+CREATE INDEX IF NOT EXISTS usersIndex ON user (email);

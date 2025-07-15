@@ -1,0 +1,26 @@
+{
+	"name": "server",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"test": "vitest",
+		"cf-typegen": "wrangler types"
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.8.19",
+		"typescript": "^5.5.2",
+		"vitest": "~3.2.0",
+		"wrangler": "^4.24.3"
+	},
+	"dependencies": {
+		"@pothos/core": "^4.7.2",
+		"@tsndr/cloudflare-worker-jwt": "^3.2.0",
+		"currency.js": "^2.0.4",
+		"graphql": "^16.11.0",
+		"graphql-yoga": "^5.15.1",
+		"workers-qb": "^1.10.2"
+	}
+}
