@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col items-center justify-center overflow-hidden" :dir="textDirection" ref="mainContainer">
+  <div class="flex flex-col items-center justify-center overflow-hidden min-h-screen" :dir="textDirection" ref="mainContainer">
     <!-- Main Content -->
     <HeaderNav class="w-full px-5" v-if="route.path != '/chat'" />
-    <RouterView class="max-w-[1200px] px-5" />
+    <RouterView class="max-w-[1200px] px-5 flex-1" />
     <AppFooter v-if="route.path != '/chat'" />
 
     <!-- Footer Links -->

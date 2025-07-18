@@ -8,7 +8,7 @@
           <span class="text-3xl xs:text-lg sm:text-2xl">E</span>cosystem<br />
           <span class="text-3xl xs:text-lg sm:text-2xl">N</span>ew
           <span class="text-3xl xs:text-lg sm:text-2xl">C</span>reative
-          <span class="text-3xl xs:text-lg sm:text-2xl">E</span>dge
+          <span class="text-3xl xs:text-lg sm:text-2xl">E</span>ducation
           <span class="text-md">(For Syria Only)</span>
         </h3>
       </div>

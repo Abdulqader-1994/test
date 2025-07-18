@@ -16,14 +16,14 @@
     <Description />
 
     <!-- buttons -->
-    <div id="account" class="flex flex-row justify-center items-center gap-x-10 xs:gap-x-3 text-2xl xs:text-sm my-7 xs:mt-0">
+    <RouterLink to="/chat" id="account" class="flex flex-row justify-center items-center gap-x-10 xs:gap-x-3 text-2xl xs:text-sm my-7 xs:mt-0">
       <div
         class="flex items-center gap-x-2 bg-gradient-to-r from-[#F8398D] to-[#2F75F8] py-1 rounded-3xl cursor-pointer px-7 xs:px-3">
         <SvgIcon type="mdi" :path="mdiAccountCircle" />
         <p>{{ $t('account') }}</p>
       </div>
       <div class="border-gradient py-1 rounded-3xl cursor-pointer px-7">{{ $t('more') }}</div>
-    </div>
+    </RouterLink>
 
     <!-- objective -->
     <div class="flex items-center justify-center text-xl xs:text-xs sm:text-sm md:text-base py-0.5">
@@ -144,6 +144,7 @@ import Calculator from '@/components/calculator.vue';
 import Workfeatures from '@/components/workfeatures.vue';
 import { useI18n } from 'vue-i18n'
 import Particles from '@/components/particles.vue';
+import { RouterLink } from 'vue-router';
 
 const { locale } = useI18n()
 

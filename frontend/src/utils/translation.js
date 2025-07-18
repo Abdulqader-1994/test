@@ -43,7 +43,7 @@ const arWords = {
   follow: 'تابعنا على مواقع التواصل',
   facebook: 'فيسبوك',
   instegram: 'انستغرام',
-  twitter: 'تويتر',
+    twitter: 'تويتر',
   contact: 'تواصل معنا عبر:',
   signUp: 'انشاء حساب',
   email: 'البريد الالكتروني',
