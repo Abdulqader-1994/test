@@ -27,9 +27,7 @@ import Massages from '@/components/massages.vue';
 const route = useRoute()
 const store = storageStore()
 
-const { signing, isAuthed, material } = storeToRefs(store)
-
-let examType = ref(null)
+const { signing, isAuthed } = storeToRefs(store)
 
 onMounted(() => {
   if (route.query.state == "pass-through value") {
