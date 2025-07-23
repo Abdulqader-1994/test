@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS "parts";
+
+CREATE TABLE IF NOT EXISTS "parts" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+	"part" TEXT NOT NULL,
+	"title" TEXT NOT NULL,
+	"material" TEXT NOT NULL
+);
+
+DROP INDEX IF EXISTS partsIndex;
+CREATE INDEX IF NOT EXISTS partsIndex ON parts (material);
