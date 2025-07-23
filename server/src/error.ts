@@ -1,0 +1,8 @@
+enum AppError {
+	UNKNOW_ERROR = 'UNKNOW_ERROR',
+	UN_AUTHED = 'UN_AUTHED', // auth error
+	INSUFFICIENT_BALANCE = 'INSUFFICIENT_BALANCE', // INSUFFICIENT_BALANCE need money
+	GEMINI_ERROR = 'GEMINI_ERROR',
+}
+
+export default AppError;
