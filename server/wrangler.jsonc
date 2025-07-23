@@ -17,10 +17,27 @@
 			"database_id": "866a9f8c-639a-4190-8930-462fa76960d5"
 		}
 	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "CHAT_ROOM",
+				"class_name": "ChatRoom"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_classes": [
+				"ChatRoom"
+			]
+		}
+	],
 	"vars": {
 		"JWT_SECRET": "ailence.ai@2025-abd_mar.1994",
 		"GOOGLE_CLIENT_ID": "1039087411910-kvkrgh0os6d8h8rq7v7anf2uv14kfi2m.apps.googleusercontent.com",
 		"GOOGLE_CLIENT_SECRET": "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",
+		"GEMINI_API_KEY": "AIzaSyAV520q6sFRd1J7IBbR1JnzwY0me4IXOso",
 	},
 	/**
 	 * Smart Placement
