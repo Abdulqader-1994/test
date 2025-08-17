@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -444,8 +445,9 @@ class GoogleAuth extends Auth {
   }
 
   void getMobileToken() async {
-    GoogleSignIn googleSignIn = GoogleSignIn(scopes: <String>['openid']);
-    GoogleSignInAccount? account = await googleSignIn.signIn();
+    var user = GoogleSignIn.instance;
+    user.attemptLightweightAuthentication();
+    GoogleSignInAccount? account = await user.attemptLightweightAuthentication();
 
     if (account == null) return;
 
